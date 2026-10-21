@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaGa - From Concrete to Green Oasis in 7 Days</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2D5A27;
+            --accent-orange: #D67D3E;
+            --bg-cream: #F7F5F0;
+            --text-dark: #1A1A1A;
+            --whatsapp-green: #25D366;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg-cream); color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navigation */
+        nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+        .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800; color: var(--primary-green); }
+        .logo span { color: var(--accent-orange); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: #555; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-green); }
+        
+        .btn-whatsapp { background: #ffffff; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 8px 20px; border-radius: 30px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .btn-whatsapp:hover { background: var(--primary-green); color: #ffffff; }
+
+        /* Hero */
+        .hero { background: linear-gradient(rgba(20, 50, 40, 0.8), rgba(20, 50, 40, 0.8)), url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2070&auto=format&fit=crop') center/cover; color: white; padding: 80px 0; text-align: center; }
+        .hero h1 { font-size: 3rem; max-width: 800px; margin: 0 auto 20px; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; color: #ddd; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .btn-cta { background: var(--whatsapp-green); color: white; padding: 16px 32px; border-radius: 40px; font-size: 1.1rem; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: transform 0.2s; }
+        .btn-cta:hover { transform: scale(1.05); }
+        .badge { display: inline-block; background: var(--accent-orange); color: white; padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+
+        /* Before / After Slider */
+        .transformation { padding: 80px 0; text-align: center; }
+        .transformation h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 10px; }
+        .transformation p { color: #666; margin-bottom: 40px; }
+        .slider-container { max-width: 900px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); cursor: ew-resize; aspect-ratio: 16/9; background: #ddd; }
+        .slider-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .after-img { clip-path: inset(0 0 0 50%); } 
+        
+        .slider-label { position: absolute; top: 20px; padding: 6px 14px; background: rgba(0,0,0,0.6); color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 10; }
+        .label-before { left: 20px; }
+        .label-after { right: 20px; }
+        .slider-handle { position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background: white; transform: translateX(-50%); pointer-events: none; z-index: 10; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+        .handle-circle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-green); font-weight: bold; font-size: 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+
+        /* Problem Section */
+        .problem { background: var(--text-dark); color: white; padding: 80px 0; text-align: center; }
+        .problem h2 { font-size: 2.5rem; margin-bottom: 40px; }
+        .problem-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .p-card { background: #2a2a2a; padding: 32px; border-radius: 12px; border: 1px solid #333; transition: border-color 0.3s; }
+        .p-card:hover { border-color: var(--accent-orange); }
+        .p-icon { font-size: 2.5rem; margin-bottom: 16px; }
+        .p-card h3 { font-size: 1.5rem; margin-bottom: 8px; }
+        .p-card p { color: #aaa; font-size: 0.95rem; }
+
+        /* Process Section */
+        .process { padding: 80px 0; text-align: center; }
+        .process h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 10px; }
+        .process-sub { margin-bottom: 50px; color: #666; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .step { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: relative; }
+        .step-num { width: 40px; height: 40px; background: var(--bg-cream); color: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 20px; border: 2px solid var(--primary-green); }
+        .step h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-dark); }
+        .step p { color: #555; font-size: 0.95rem; }
+
+        /* Reviews */
+        .reviews { background: white; padding: 80px 0; text-align: center; }
+        .reviews h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 40px; }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; text-align: left; }
+        .review-card { background: var(--bg-cream); padding: 30px; border-radius: 16px; }
+        .stars { color: var(--accent-orange); margin-bottom: 15px; font-size: 1.2rem; }
+        .review-card p { font-style: italic; color: #444; margin-bottom: 20px; }
+        .reviewer { display: flex; align-items: center; gap: 15px; }
+        .avatar { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2rem; }
+        .reviewer-info h4 { font-size: 1rem; color: var(--text-dark); }
+        .reviewer-info span { font-size: 0.85rem; color: #777; }
+
+        /* Final CTA */
+        .final-cta { background: var(--primary-green); color: white; padding: 80px 0; text-align: center; }
+        .final-cta h2 { font-size: 3rem; margin-bottom: 20px; }
+        .final-cta p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+        .btn-cta-orange { background: var(--accent-orange); color: white; padding: 16px 32px; border-radius: 40px; font-size: 1.1rem; font-weight: 700; display: inline-block; transition: transform 0.2s; }
+        .btn-cta-orange:hover { transform: scale(1.05); }
+        .tagline { margin-top: 40px; font-size: 0.9rem; opacity: 0.6; font-style: italic; }
+
+        /* Floating WhatsApp */
+        .float-wa { position: fixed; bottom: 24px; right: 24px; background: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5); z-index: 999; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
+        @media (max-width: 768px) {
+            .nav-links .desktop-link { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .final-cta h2 { font-size: 2rem; }
+            .transformation h2, .problem h2, .process h2, .reviews h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">BaGa<span>.</span></a>
+            <div class="nav-links">
+                <a href="#problem" class="desktop-link">The Problem</a>
+                <a href="#process" class="desktop-link">How It Works</a>
+                <a href="https://wa.me/919818665660" target="_blank" class="btn-whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.497.654.667-2.43-.156-.252a6.56 6.56 0 0 1-1.003-3.505c0-3.626 2.957-6.584 6.587-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.645-.182-.064-.315-.099-.447.099-.132.197-.512.645-.627.775-.115.131-.231.146-.427.049-.197-.099-.834-.308-1.592-.98-.587-.523-.982-1.165-1.095-1.362-.114-.197-.012-.305.088-.404.087-.088.197-.231.296-.346.099-.115.131-.197.197-.33.066-.132.099-.246.049-.346-.049-.099-.447-1.078-.612-1.476-.165-.396-.346-.346-.447-.346l-.396-.018c-.132 0-.346.049-.528.247s-.69.675-.69 1.643.69 1.905.788 2.035c.099.132 1.4 2.135 3.403 3.49.48.264.855.421 1.149.541.483.193.922.165 1.27.1.388-.058 1.17-.479 1.337-.943.164-.464.164-.86.115-.943-.049-.082-.182-.131-.38-.23z"/></svg>
+                    Book Consultation
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+            <span class="badge">Delhi NCR's #1 Balcony Garden Service</span>
+            <h1>Transform Your Concrete Balcony into a Green Oasis</h1>
+            <p>From your first WhatsApp message to a fully installed garden in just 7 days. No mess, no dead plants, just pure nature.</p>
+            <a href="https://wa.me/919818665660" target="_blank" class="btn-cta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326z"/></svg>
+                Book Free WhatsApp Consultation
+            </a>
+        </div>
+    </header>
+
+    <!-- Before/After Transformation -->
+    <section class="transformation" id="transformation">
+        <div class="container">
+            <h2>See the BaGa Transformation</h2>
+            <p>Drag the slider to see the magic. ✨</p>
+            
+            <div class="slider-container" id="slider">
+                <img src="before.jpeg" class="slider-img before-img" alt="Empty Concrete Balcony Before BaGa">
+                <img src="after.png" class="slider-img after-img" alt="Lush Green Balcony After BaGa" id="afterImg">
+                
+                <span class="slider-label label-before">Before</span>
+                <span class="slider-label label-after">After</span>
+                
+                <div class="slider-handle" id="handle">
+                    <div class="handle-circle">⇄</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem" id="problem">
+        <div class="container">
+            <h2>Tired of Dead Plants & Empty Slabs?</h2>
+            <div class="problem-cards">
+                <div class="p-card">
+                    <div class="p-icon">⏳</div>
+                    <h3>No Time</h3>
+                    <p>You work hard. Let our experts handle the planting, watering, and monthly maintenance.</p>
+                </div>
+                <div class="p-card">
+                    <div class="p-icon">🌦️</div>
+                    <h3>Harsh Weather</h3>
+                    <p>From summer heat waves and heavy monsoon rains to acute winter cold, changing conditions kill normal plants. We use resilient greens and smart systems.</p>
+                </div>
+                <div class="p-card">
+                    <div class="p-icon">🤷</div>
+                    <h3>Knowledge Challenges</h3>
+                    <p>Don't know ferns from succulents? We design the perfect ecosystem for your space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process / Solution -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2>How It Works</h2>
+            <p class="process-sub">From enquiry to installation in just 7 days.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>Chat & Assess</h3>
+                    <p>Send us a WhatsApp message. We review your balcony photos, sunlight, and space.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>Custom Design</h3>
+                    <p>Our experts design a custom garden layout. We pick the right plants and smart pots.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>7-Day Installation</h3>
+                    <p>We install everything mess-free within 7 days of your first message. Sit back and relax.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews">
+        <div class="container">
+            <h2>Loved by Homeowners Across Delhi NCR</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The smart irrigation system is a lifesaver. I travel often for work, and coming home to a lush balcony instead of dead plants is incredible."</p>
+                    <div class="reviewer">
+                        <div class="avatar" style="background: var(--accent-orange);">P</div>
+                        <div class="reviewer-info">
+                            <h4>Priya S.</h4>
+                            <span>Gurugram</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"BaGa mapped the sunlight on my balcony perfectly. They knew exactly where to place the ferns vs. the succulents. True professionals!"</p>
+                    <div class="reviewer">
+                        <div class="avatar" style="background: var(--primary-green);">R</div>
+                        <div class="reviewer-info">
+                            <h4>Rahul M.</h4>
+                            <span>South Delhi NCR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Breathe Cleaner Air at Home?</h2>
+            <p>Stop staring at an empty concrete slab. Let's build your oasis today.</p>
+            <a href="https://wa.me/919818665660" target="_blank" class="btn-cta-orange">
+                Chat on WhatsApp Now →
+            </a>
+            <p class="tagline">Transforming concrete into calm. One balcony at a time.</p>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919818665660" target="_blank" class="float-wa">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.497.654.667-2.43-.156-.252a6.56 6.56 0 0 1-1.003-3.505c0-3.626 2.957-6.584 6.587-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.645-.182-.064-.315-.099-.447.099-.132.197-.512.645-.627.775-.115.131-.231.146-.427.049-.197-.099-.834-.308-1.592-.98-.587-.523-.982-1.165-1.095-1.362-.114-.197-.012-.305.088-.404.087-.088.197-.231.296-.346.099-.115.131-.197.197-.33.066-.132.099-.246.049-.346-.049-.099-.447-1.078-.612-1.476-.165-.396-.346-.346-.447-.346l-.396-.018c-.132 0-.346.049-.528.247s-.69.675-.69 1.643.69 1.905.788 2.035c.099.132 1.4 2.135 3.403 3.49.48.264.855.421 1.149.541.483.193.922.165 1.27.1.388-.058 1.17-.479 1.337-.943.164-.464.164-.86.115-.943-.049-.082-.182-.131-.38-.23z"/>
+        </svg>
+    </a>
+
+    <!-- JavaScript for Slider -->
+    <script>
+        const slider = document.getElementById('slider');
+        const afterImg = document.getElementById('afterImg');
+        const handle = document.getElementById('handle');
+
+        function moveSlider(x) {
+            let rect = slider.getBoundingClientRect();
+            let position = ((x - rect.left) / rect.width) * 100;
+            
+            if (position < 0) position = 0;
+            if (position > 100) position = 100;
+            
+            afterImg.style.clipPath = `inset(0 0 0 ${position}%)`;
+            handle.style.left = `${position}%`;
+        }
+
+        slider.addEventListener('mousemove', (e) => {
+            moveSlider(e.clientX);
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            moveSlider(e.touches[0].clientX);
+        });
+    </script>
+</body>
+</html>
